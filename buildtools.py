@@ -7,29 +7,6 @@ import boto3
 import os
 
 """
-@param yamlFile  the path to the yaml file to modify
-@param filesToInject  a map contianing the path to python files to inject
-                      and the lambda function they belong to
-"""
-def injectLambdaCodeIntoYAML(yamlFile, filesToInject):
-    
-    with open(yamlFile, 'r') as f:
-        yamlData = yaml.load(f.read())
-       
-    for lambdaName in filesToInject.keys():
-        for resource in yamlData['Resources']:
-            if lambdaName == resource:
-                if yamlData['Resources'][lambdaName]['Type'] == 'AWS::Lambda::Function':
-                    try:
-                        with open(filesToInject[lambdaName], 'r') as f:
-                            yamlData['Resources'][lambdaName]['Properties']['Code']['ZipFile'] = f.read()
-                    except Exception as e:
-                        print("Failed to load",filesToInject[lambdaName],"for lambda function",lambdaName,"  Reason:",str(e))
-                        
-    with open(yamlFile, 'w') as f:
-        f.write(yaml.dump(yamlData))
-
-"""
 @param functionName  name of the lambda function to invoke
 @param eventData     data to pass to the lambda function
 """
