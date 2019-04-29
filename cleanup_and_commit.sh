@@ -3,7 +3,7 @@
 #clean up stuff we don't want to commit'
 . cleanup_virtual_env.sh $1
 rm -rf python
-rm -rf __pycache__
+rm -rf __pycache__ *pyc
 rm -f *zip
 rm -f *log
 

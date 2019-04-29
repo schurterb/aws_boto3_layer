@@ -7,7 +7,7 @@ from sh import mkdir, cp, rm
 
 from buildtools import createOrUpdateLambdaLayer
 
-resourceOriginalDirectory = "document_aggregator/lib/python3.6/site-packages/"
+resourceOriginalDirectory = "aws_boto3_layer/lib/python3.6/site-packages/"
 
 lambdaLayers = {}
 resourceZipDirectories = {}
