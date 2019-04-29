@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import yaml
 import json
 import boto3
 import os
